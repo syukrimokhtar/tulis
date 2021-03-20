@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 10
   },
   content: {
-    fontSize:60,
+    fontSize:50,
     padding: 0,
     margin: 0,
     width: '90vw',
@@ -28,13 +28,24 @@ const useStyles = makeStyles((theme) => ({
     position:"fixed",
     width:"60px",
     height:"60px",
-    bottom:"50px",
-    right: "50px",
+    bottom:"20px",
+    right: "20px",
     backgroundColor: "#D4AC0D",
     color: "#000",
     borderRadius: "50px",
     textAlign: "center"
-  }
+  },
+  fixFloat: {
+    position:"fixed",
+    width:"60px",
+    height:"60px",
+    bottom:"400px",
+    right: "20px",
+    backgroundColor: "#D4AC0D",
+    color: "#000",
+    borderRadius: "50px",
+    textAlign: "center"
+  } 
   
 }));
 
@@ -42,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const classes = useStyles();
   const [value, setValue] = React.useState('');
+  const [focus, setFocus] = React.useState(false);
   const handleClear = (e: any) => {
     Array.from(document.querySelectorAll("textarea")).forEach(
       input => (input.value = "")
@@ -51,12 +63,22 @@ function App() {
   const handleChange = (event: any) => {
     setValue(event.target.value);
   };
+  const handleFocus = (event: any) => {
+    setFocus(true);
+  };
+  const handleBlur = (event: any) => {
+    setFocus(false);    
+  };
+  const handleRefresh = (event: any) => {
+    window.location.reload();
+  };
+  var classFocus = focus ? classes.fixFloat : classes.float;
   return (
     <div>
       <form className={classes.form}>
-        <textarea onChange={handleChange} defaultValue={value} className={classes.content}></textarea>
+        <textarea onFocus={handleFocus} onBlur={handleBlur} onChange={handleChange} defaultValue={value} className={classes.content}></textarea>
       </form>
-    <a href="#" className={classes.float} onClick={handleClear}>
+    <a href="#" className={classFocus} onClick={handleClear}>
       <i className="fa fa-trash fa-2x" style={{marginTop:"12px"}}></i>
     </a>
   </div>
