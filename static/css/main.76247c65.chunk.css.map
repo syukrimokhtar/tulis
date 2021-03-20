@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/App.css"],"names":[],"mappings":"AAAA,KACC,qCAAuC,CACvC,cAAc,CACd,wBACD","file":"main.76247c65.chunk.css","sourcesContent":["body{\n\tfont-family:Verdana, Geneva, sans-serif;\n\tfont-size:18px;\n\tbackground-color:#2C3E50;\n}"]}
